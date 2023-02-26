@@ -1,25 +1,12 @@
-// Import required modules
 const express = require('express');
-const bodyParser = require('body-parser');
-
-// Create an instance of express
 const app = express();
 
-// Parse incoming request data as JSON
-app.use(bodyParser.json());
-
-// Define a simple GET route
-app.get('/hello', (req, res) => {
-  res.send('Hello, world!');
+app.get('/api', (req, res) => {
+  res.json({ message: 'Hello, World!' });
 });
 
-// Define a simple POST route
-app.post('/echo', (req, res) => {
-  const message = req.body.message;
-  res.send(`You said: ${message}`);
-});
+const PORT = process.env.PORT || 3000;
 
-// Start the server
-app.listen(3000, () => {
-  console.log('Server started on port 3000');
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
 });
